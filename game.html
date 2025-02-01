@@ -1,0 +1,56 @@
+<nav class="navbar">
+    <div class="nav-container">
+        <img src="logo.png" width="70">
+        <a href="#" class="nav-logo">RN Cell</a>
+        <p class="nav-menu">
+            <ul>
+                <li><a href="index.html" class="home">Home</a></li><link rel="stylesheet" href="style.css">
+                <li><a href="layanan.html" class="layanan">Layanan</a></li><link rel="stylesheet" href="style.css">
+                <li><a href="kontak.html" class="kontak">Kontak</a></li><link rel="stylesheet" href="style.css">
+            </ul>
+        </p>
+    </div>
+</nav>
+<body class="body">
+    <div class="tagihan">
+        <h1>Penjualan Voucher Game</h1>
+        <form id="voucherForm">
+            <label for="game">Pilih Game:</label>
+            <select id="game" name="game" required>
+                <option value="">-- Pilih Game --</option>
+                <option value="Mobile Legends">Mobile Legends</option>
+                <option value="Free Fire">Free Fire</option>
+                <option value="PUBG Mobile">PUBG Mobile</option>
+                <option value="Genshin Impact">Genshin Impact</option>
+            </select>
+
+            <label for="voucher">Pilih Voucher:</label>
+            <select id="voucher" name="voucher" required>
+                <option value="">-- Pilih Voucher --</option>
+                <option value="10 Diamonds - Rp 10,000">10 Diamonds - Rp 10,000</option>
+                <option value="50 Diamonds - Rp 50,000">50 Diamonds - Rp 50,000</option>
+                <option value="100 Diamonds - Rp 100,000">100 Diamonds - Rp 100,000</option>
+                <option value="500 Diamonds - Rp 500,000">500 Diamonds - Rp 500,000</option>
+            </select>
+
+            <label for="payment">Metode Pembayaran:</label>
+            <select id="payment" name="payment" required>
+                <option value="">-- Pilih Pembayaran --</option>
+                <option value="GoPay">GoPay</option>
+                <option value="DANA">DANA</option>
+                <option value="OVO">OVO</option>
+                <option value="Transfer Bank">Transfer Bank</option>
+            </select>
+
+            <button type="submit" id="submitBtn">Beli Voucher</button>
+        </form>
+
+        <div id="result" class="hidden">
+            <h2>Detail Pembayaran</h2>
+            <p><strong>Game:</strong> <span id="detailGame"></span></p>
+            <p><strong>Voucher:</strong> <span id="detailVoucher"></span></p>
+            <p><strong>Metode Pembayaran:</strong> Rp <span id="detailPayment"></span></p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>

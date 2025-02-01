@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Up E-Wallet</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0d048c, #010b80); /* Warna biru gradien */
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .form-container {
+            background: #ffffff; /* Latar belakang putih untuk form */
+            color: #333;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            text-align: center;
+            color: #12035c; /* Warna biru untuk judul */
+        }
+
+        label {
+            font-weight: 600;
+            display: block;
+            margin: 1rem 0 0.5rem;
+        }
+
+        input, select, button {
+            width: 100%;
+            padding: 0.8rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #0d025a; /* Border biru saat fokus */
+            box-shadow: 0 0 5px rgba(33, 147, 176, 0.5);
+        }
+
+        button {
+            background: #01016b; /* Warna biru untuk tombol */
+            color: #fff;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #1e3c72; /* Warna biru gelap saat hover */
+        }
+
+        #ewalletResult {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            border-radius: 5px;
+            background: #f7f7f7;
+            color: #333;
+            display: none;
+        }
+
+        #ewalletResult h2 {
+            font-size: 1.4rem;
+            color: #030155; /* Judul detail menjadi biru */
+            margin-bottom: 1rem;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Top Up E-Wallet</h1>
+        <form id="ewalletForm">
+            <label for="ewalletType">Jenis E-Wallet:</label>
+            <select id="ewalletType" name="ewalletType" required>
+                <option value="" disabled selected>-- Pilih E-Wallet --</option>
+                <option value="gopay">GoPay</option>
+                <option value="ovo">OVO</option>
+                <option value="dana">DANA</option>
+                <option value="shopeepay">ShopeePay</option>
+            </select>
+
+            <label for="phoneNumber">Nomor HP:</label>
+            <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Masukkan nomor HP" required>
+
+            <label for="topUpAmount">Nominal Top Up:</label>
+            <select id="topUpAmount" name="topUpAmount" required>
+                <option value="" disabled selected>-- Pilih Nominal --</option>
+                <option value="20000">Rp. 20.000</option>
+                <option value="50000">Rp. 50.000</option>
+                <option value="100000">Rp. 100.000</option>
+                <option value="200000">Rp. 200.000</option>
+            </select>
+
+            <button type="submit">Top Up Sekarang</button>
+        </form>
+
+        <div id="ewalletResult" class="hidden">
+            <h2>Detail Top Up</h2>
+            <p><strong>Jenis E-Wallet:</strong> <span id="ewalletTypeResult"></span></p>
+            <p><strong>Nomor HP:</strong> <span id="phoneNumberResult"></span></p>
+            <p><strong>Nominal Top Up:</strong> Rp <span id="topUpAmountResult"></span></p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('ewalletForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Ambil nilai dari form
+            const ewalletType = document.getElementById('ewalletType').value;
+            const phoneNumber = document.getElementById('phoneNumber').value;
+            const topUpAmount = document.getElementById('topUpAmount').value;
+
+            // Simpan transaksi ke localStorage
+            let transactions = JSON.parse(localStorage.getItem('transactions')) || [];
+
+            transactions.push({
+                type: ewalletType,
+                phone: phoneNumber,
+                amount: topUpAmount,
+                date: new Date().toLocaleString()
+            });
+
+            localStorage.setItem('transactions', JSON.stringify(transactions));
+
+            // Redirect ke halaman transaksi.html
+            window.location.href = 'transaksi.html';
+        });
+    </script>
+</body>
+</html>

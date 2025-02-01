@@ -1,0 +1,42 @@
+<nav class="navbar">
+    <div class="nav-container">
+        <img src="logo.png" width="70">
+        <a href="#" class="nav-logo">RN Cell</a>
+        <p class="nav-menu">
+            <ul>
+                <li><a href="index.html" class="home">Home</a></li><link rel="stylesheet" href="style.css">
+                <li><a href="layanan.html" class="layanan">Layanan</a></li><link rel="stylesheet" href="style.css">
+                <li><a href="kontak.html" class="kontak">Kontak</a></li><link rel="stylesheet" href="style.css">
+            </ul>
+        </p>
+    </div>
+</nav>
+<body class="body"><link rel="stylesheet" href="style.css">
+    <div class="tagihan">
+        <h1 class="cardblue">Pembayaran Tagihan</h1>
+        <form id="paymentForm">
+        <label for="service">Pilih Layanan:</label>
+        <select id="service" name="service" required>
+            <option value="" disabled selected>-- Pilih Layanan --</option>
+            <option value="listrik">Listrik</option>
+            <option value="air">Air</option>
+        </select>
+    
+        <label for="accountNumber">Nomor Akun / Pelanggan:</label>
+        <input type="text" id="accountNumber" name="accountNumber" placeholder="Masukkan nomor pelanggan" required>
+    
+        <label for="amount">Jumlah Pembayaran:</label>
+        <input type="number" id="amount" name="amount" placeholder="Masukkan jumlah pembayaran" required>
+    
+        <button type="submit">Bayar Sekarang</button>
+        </form>
+        <div id="result" class="hidden">
+            <h2>Detail Pembayaran</h2>
+            <p><strong>Layanan:</strong> <span id="serviceResult"></span></p>
+            <p><strong>Nomor Pelanggan:</strong> <span id="accountResult"></span></p>
+            <p><strong>Jumlah:</strong> Rp <span id="amountResult"></span></p>
+        </div>
+        </div>
+        <script src="script.js"></script>
+    </body>
+    </html>
